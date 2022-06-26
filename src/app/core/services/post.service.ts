@@ -29,6 +29,8 @@ export class PostService {
     localStorage.setItem('posts', JSON.stringify(this.posts));
   }
 
+  editPost(post: Post) {}
+
   deletePost(post: Post) {
     this.posts = this.posts.filter((p) => p.title !== post.title);
     this.postsUpdated.next([...this.posts]);
