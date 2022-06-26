@@ -1,6 +1,14 @@
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 import { Post } from '../models/Post';
+import { environment as env } from 'src/environments/environment';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+
+const httpOptions = {
+  headers: new HttpHeaders({
+    'Content-Type': 'application/json',
+  }),
+};
 
 @Injectable({
   providedIn: 'root',
@@ -8,33 +16,29 @@ import { Post } from '../models/Post';
 export class PostService {
   private posts: Post[] = [];
   private postsUpdated = new Subject<Post[]>();
+  postsSub$: BehaviorSubject<Post[]> = new BehaviorSubject<Post[]>([]);
 
-  constructor() {}
+  constructor(private http: HttpClient) {}
 
   getPosts() {
-    return [...this.posts];
+    let url = env.POSTS_API;
+    return this.http.get<Post[]>(`${url}/posts`);
   }
 
-  getPostUpdatedListener() {
-    return this.postsUpdated.asObservable();
+  getPost(id: any) {
+    return { ...this.posts.find((p: Post) => p.id === id) };
   }
 
-  addPost(title: string, content: string) {
-    const post: Post = {
-      title: title,
-      content: content,
-    };
+  addPost(post: Post) {
+    let url = env.POSTS_API;
     this.posts.push(post);
-    this.postsUpdated.next([...this.posts]);
     localStorage.setItem('posts', JSON.stringify(this.posts));
+    return this.http.post<Post[]>(`${url}/posts`, post, httpOptions);
   }
-
-  editPost(post: Post) {}
 
   deletePost(post: Post) {
-    this.posts = this.posts.filter((p) => p.title !== post.title);
-    this.postsUpdated.next([...this.posts]);
-    localStorage.setItem('posts', JSON.stringify(this.posts));
+    let url = env.POSTS_API;
+    return this.http.delete<Post[]>(`${url}/posts/${post.id}`);
   }
 
   getLSPosts() {

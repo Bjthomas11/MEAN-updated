@@ -1,4 +1,5 @@
 import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
@@ -25,6 +26,7 @@ import { PostListComponent } from './shared/posts/post-list/post-list.component'
     BrowserModule,
     AppRoutingModule,
     CommonModule,
+    HttpClientModule,
     FormsModule,
     BrowserAnimationsModule,
     MatInputModule,

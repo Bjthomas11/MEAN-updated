@@ -8,28 +8,21 @@ import { PostService } from 'src/app/core/services/post.service';
   templateUrl: './post-list.component.html',
   styleUrls: ['./post-list.component.scss'],
 })
-export class PostListComponent implements OnInit, OnDestroy {
+export class PostListComponent implements OnInit {
   posts: Post[] = [];
   postSub: Subscription = new Subscription();
 
   constructor(public postService: PostService) {}
 
   ngOnInit(): void {
-    this.posts = this.postService.getPosts();
-    this.postSub = this.postService
-      .getPostUpdatedListener()
-      .subscribe((posts: Post[]) => {
-        this.posts = posts;
-      });
+    this.postService.getPosts().subscribe((post: any) => {
+      this.posts = post;
+    });
   }
 
-  onDelete(post: Post) {
-    this.postService.deletePost(post);
-  }
-
-  onEdit(post: Post) {}
-
-  ngOnDestroy(): void {
-    this.postSub.unsubscribe();
+  onDelete(post: any) {
+    this.postService.deletePost(post).subscribe();
+    this.posts = this.posts.filter((p) => p.id !== post.id);
+    localStorage.setItem('posts', JSON.stringify(this.posts));
   }
 }
