@@ -10,6 +10,7 @@
     </mat-action-row>
   </mat-expansion-panel>
 </mat-accordion>
+<app-pagination [posts]="posts"></app-pagination>
 <ng-container *ngIf="posts.length <= 0" class="mat-body-1 info-text">
   <h2>No Posts</h2>
   <a

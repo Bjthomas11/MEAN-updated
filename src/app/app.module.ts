@@ -10,6 +10,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatPaginatorModule } from '@angular/material/paginator';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './shared/header/header.component';
@@ -18,6 +19,7 @@ import { PostListComponent } from './shared/posts/post-list/post-list.component'
 import { PostsInterceptor } from './core/services/posts.interceptor';
 import { LoaderComponent } from './shared/loader/loader.component';
 import { FooterComponent } from './shared/footer/footer.component';
+import { PaginationComponent } from './shared/pagination/pagination.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +29,7 @@ import { FooterComponent } from './shared/footer/footer.component';
     PostListComponent,
     LoaderComponent,
     FooterComponent,
+    PaginationComponent,
   ],
   imports: [
     BrowserModule,
@@ -41,6 +44,7 @@ import { FooterComponent } from './shared/footer/footer.component';
     MatToolbarModule,
     MatExpansionModule,
     MatProgressSpinnerModule,
+    MatPaginatorModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: PostsInterceptor, multi: true },

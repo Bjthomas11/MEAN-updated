@@ -47,11 +47,4 @@ export class PostsService {
     let url = env.POSTS_API;
     return this.http.delete<Post[]>(`${url}/posts/${post.id}`);
   }
-
-  getLSPosts() {
-    const posts = localStorage.getItem('posts');
-    if (posts) {
-      this.posts = JSON.parse(posts);
-    }
-  }
 }

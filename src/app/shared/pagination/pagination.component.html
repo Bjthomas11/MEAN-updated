@@ -1,0 +1,8 @@
+<mat-paginator
+  [length]="posts.length"
+  [pageSize]="postPerPage"
+  [pageSizeOptions]="pageSizeOptions"
+  aria-label="Select post"
+  (page)="onPageChange($event)"
+>
+</mat-paginator>
