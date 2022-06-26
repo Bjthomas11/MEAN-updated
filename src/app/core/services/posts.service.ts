@@ -13,7 +13,7 @@ const httpOptions = {
 @Injectable({
   providedIn: 'root',
 })
-export class PostService {
+export class PostsService {
   private posts: Post[] = [];
   private postsUpdated = new Subject<Post[]>();
   postsSub$: BehaviorSubject<Post[]> = new BehaviorSubject<Post[]>([]);

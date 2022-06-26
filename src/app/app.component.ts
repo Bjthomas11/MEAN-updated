@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Post } from './core/models/Post';
-import { PostService } from './core/services/post.service';
+import { PostsService } from './core/services/posts.service';
 
 @Component({
   selector: 'app-root',
@@ -8,7 +8,7 @@ import { PostService } from './core/services/post.service';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-  constructor(private postService: PostService) {}
+  constructor(private postService: PostsService) {}
 
   ngOnInit() {}
 }

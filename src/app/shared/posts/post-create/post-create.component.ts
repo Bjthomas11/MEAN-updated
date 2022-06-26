@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { Post } from 'src/app/core/models/Post';
-import { PostService } from 'src/app/core/services/post.service';
+import { PostsService } from 'src/app/core/services/posts.service';
 
 @Component({
   selector: 'app-post-create',
@@ -15,14 +15,13 @@ export class PostCreateComponent implements OnInit {
   post: any;
 
   constructor(
-    public postService: PostService,
+    public postService: PostsService,
     private router: Router,
     public route: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((params: ParamMap) => {
-      console.log(params);
       if (params.has('id')) {
         this.editMode = true;
         this.postId = params.get('id');
