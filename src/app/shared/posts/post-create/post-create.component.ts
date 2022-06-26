@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 import { PostService } from 'src/app/core/services/post.service';
 
 @Component({
@@ -10,7 +11,7 @@ import { PostService } from 'src/app/core/services/post.service';
 export class PostCreateComponent implements OnInit {
   inputtedValue: any;
   inputTitle: string = '';
-  constructor(public postService: PostService) {}
+  constructor(public postService: PostService, private router: Router) {}
 
   ngOnInit(): void {}
 
@@ -18,5 +19,6 @@ export class PostCreateComponent implements OnInit {
     if (postForm.invalid) return;
     this.postService.addPost(postForm.value.title, postForm.value.content);
     postForm.resetForm();
+    this.router.navigate(['/']);
   };
 }
