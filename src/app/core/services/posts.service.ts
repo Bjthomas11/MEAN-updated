@@ -15,14 +15,13 @@ const httpOptions = {
 })
 export class PostsService {
   private posts: Post[] = [];
-  private postsUpdated = new Subject<Post[]>();
-  postsSub$: BehaviorSubject<Post[]> = new BehaviorSubject<Post[]>([]);
 
   constructor(private http: HttpClient) {}
 
-  getPosts() {
+  getPosts(postsPerPage: number, currentPage: number) {
     let url = env.POSTS_API;
-    return this.http.get<Post[]>(`${url}/posts`);
+    const queryParams = `?pagesize=${postsPerPage}&page=${currentPage}`;
+    return this.http.get<Post[]>(`${url}/posts` + queryParams);
   }
 
   getPost(id: any) {

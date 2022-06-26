@@ -44,12 +44,7 @@ export class PostCreateComponent implements OnInit {
     if (!this.editMode) {
       this.postService.addPost(this.post).subscribe();
     } else {
-      console.log(this.post);
-      this.postService
-        .updatePost(this.postId, this.post)
-        .subscribe((res: any) => {
-          console.log(res);
-        });
+      this.postService.updatePost(this.postId, this.post).subscribe();
     }
     postForm.resetForm();
     this.router.navigate(['/']);

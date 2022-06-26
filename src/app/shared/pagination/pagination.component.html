@@ -1,4 +1,5 @@
 <mat-paginator
+  *ngIf="posts.length > 1"
   [length]="posts.length"
   [pageSize]="postPerPage"
   [pageSizeOptions]="pageSizeOptions"

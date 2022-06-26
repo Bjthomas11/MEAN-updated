@@ -12,8 +12,6 @@ export class PaginationComponent implements OnInit {
   @Input() posts: Post[] = [];
   postPerPage: number = 2;
   pageSizeOptions: number[] = [1, 2, 4, 6];
-  datasource: null;
-  pageIndex: number;
 
   constructor(private postService: PostsService) {}
 
