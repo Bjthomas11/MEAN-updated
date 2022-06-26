@@ -27,7 +27,7 @@ export class PostService {
 
   getPost(id: any) {
     let url = env.POSTS_API;
-    return this.http.get<Post[]>(`${url}/posts/${id}`);
+    return this.http.get<any>(`${url}/posts/${id}`);
   }
 
   addPost(post: Post) {
@@ -40,7 +40,6 @@ export class PostService {
   updatePost(id: any, post: Post) {
     let url = env.POSTS_API;
     this.posts.push(post);
-    // localStorage.setItem('posts', JSON.stringify(this.posts));
     return this.http.put<Post[]>(`${url}/posts/${id}`, post, httpOptions);
   }
 

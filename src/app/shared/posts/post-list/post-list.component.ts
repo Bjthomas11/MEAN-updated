@@ -22,6 +22,5 @@ export class PostListComponent implements OnInit {
   onDelete(post: any) {
     this.postService.deletePost(post).subscribe();
     this.posts = this.posts.filter((p) => p.id !== post.id);
-    // localStorage.setItem('posts', JSON.stringify(this.posts));
   }
 }
