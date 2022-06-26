@@ -12,10 +12,10 @@ const routes: Routes = [
     path: 'create',
     component: PostCreateComponent,
   },
-  // {
-  //   path: 'edit/:postId',
-  //   component: PostCreateComponent,
-  // },
+  {
+    path: 'edit/:id',
+    component: PostCreateComponent,
+  },
 ];
 
 @NgModule({

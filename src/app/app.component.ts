@@ -10,7 +10,5 @@ import { PostService } from './core/services/post.service';
 export class AppComponent implements OnInit {
   constructor(private postService: PostService) {}
 
-  ngOnInit() {
-    this.postService.getLSPosts();
-  }
+  ngOnInit() {}
 }

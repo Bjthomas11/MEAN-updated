@@ -26,7 +26,8 @@ export class PostService {
   }
 
   getPost(id: any) {
-    return { ...this.posts.find((p: Post) => p.id === id) };
+    let url = env.POSTS_API;
+    return this.http.get<Post[]>(`${url}/posts/${id}`);
   }
 
   addPost(post: Post) {
@@ -34,6 +35,13 @@ export class PostService {
     this.posts.push(post);
     localStorage.setItem('posts', JSON.stringify(this.posts));
     return this.http.post<Post[]>(`${url}/posts`, post, httpOptions);
+  }
+
+  updatePost(id: any, post: Post) {
+    let url = env.POSTS_API;
+    this.posts.push(post);
+    // localStorage.setItem('posts', JSON.stringify(this.posts));
+    return this.http.put<Post[]>(`${url}/posts/${id}`, post, httpOptions);
   }
 
   deletePost(post: Post) {

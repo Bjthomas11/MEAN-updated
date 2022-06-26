@@ -10,8 +10,6 @@ import { PostService } from 'src/app/core/services/post.service';
   styleUrls: ['./post-create.component.scss'],
 })
 export class PostCreateComponent implements OnInit {
-  inputtedValue: any;
-  inputTitle: string = '';
   editMode: boolean = false;
   postId: string;
   post: any;
@@ -22,15 +20,36 @@ export class PostCreateComponent implements OnInit {
     public route: ActivatedRoute
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.route.paramMap.subscribe((params: ParamMap) => {
+      console.log(params);
+      if (params.has('id')) {
+        this.editMode = true;
+        this.postId = params.get('id');
+        this.post = this.postService.getPost(this.postId);
+      } else {
+        this.editMode = false;
+        this.postId = null;
+      }
+    });
+  }
 
-  onClick = (postForm: NgForm) => {
+  onSave = (postForm: NgForm) => {
     if (postForm.invalid) return;
     this.post = {
       title: postForm.value.title,
       content: postForm.value.content,
     };
-    this.postService.addPost(this.post).subscribe();
+    if (!this.editMode) {
+      this.postService.addPost(this.post).subscribe();
+    } else {
+      console.log(this.post);
+      this.postService
+        .updatePost(this.postId, this.post)
+        .subscribe((res: any) => {
+          console.log(res);
+        });
+    }
     postForm.resetForm();
     this.router.navigate(['/']);
   };
