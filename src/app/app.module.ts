@@ -20,6 +20,8 @@ import { PostsInterceptor } from './core/services/posts.interceptor';
 import { LoaderComponent } from './shared/loader/loader.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { PaginationComponent } from './shared/pagination/pagination.component';
+import { LoginComponent } from './shared/auth/login/login.component';
+import { SignupComponent } from './shared/auth/signup/signup.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +32,8 @@ import { PaginationComponent } from './shared/pagination/pagination.component';
     LoaderComponent,
     FooterComponent,
     PaginationComponent,
+    LoginComponent,
+    SignupComponent,
   ],
   imports: [
     BrowserModule,
