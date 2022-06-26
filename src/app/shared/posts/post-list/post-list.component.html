@@ -10,4 +10,13 @@
     </mat-action-row>
   </mat-expansion-panel>
 </mat-accordion>
-<h2 *ngIf="posts.length <= 0" class="mat-body-1 info-text">No Posts</h2>
+<ng-container *ngIf="posts.length <= 0" class="mat-body-1 info-text">
+  <h2>No Posts</h2>
+  <a
+    mat-raised-button
+    color="primary"
+    routerLink="/create"
+    routerLinkActive="mat-accent"
+    >Create Post</a
+  >
+</ng-container>

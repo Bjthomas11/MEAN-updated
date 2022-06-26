@@ -17,6 +17,7 @@ import { PostCreateComponent } from './shared/posts/post-create/post-create.comp
 import { PostListComponent } from './shared/posts/post-list/post-list.component';
 import { PostsInterceptor } from './core/services/posts.interceptor';
 import { LoaderComponent } from './shared/loader/loader.component';
+import { FooterComponent } from './shared/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { LoaderComponent } from './shared/loader/loader.component';
     PostCreateComponent,
     PostListComponent,
     LoaderComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
