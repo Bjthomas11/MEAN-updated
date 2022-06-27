@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
+import { Subject } from 'rxjs';
 import { Post } from 'src/app/core/models/Post';
 import { PostsService } from 'src/app/core/services/posts.service';
+import { UserService } from 'src/app/core/services/user.service';
 
 @Component({
   selector: 'app-post-create',

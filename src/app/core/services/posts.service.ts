@@ -19,31 +19,31 @@ export class PostsService {
   constructor(private http: HttpClient) {}
 
   getPosts(postsPerPage: number, currentPage: number) {
-    let url = env.POSTS_API;
+    let url = env.LOCAL_SERVER_API;
     const queryParams = `?pagesize=${postsPerPage}&page=${currentPage}`;
     return this.http.get<Post[]>(`${url}/posts` + queryParams);
   }
 
   getPost(id: any) {
-    let url = env.POSTS_API;
+    let url = env.LOCAL_SERVER_API;
     return this.http.get<any>(`${url}/posts/${id}`);
   }
 
   addPost(post: Post) {
-    let url = env.POSTS_API;
+    let url = env.LOCAL_SERVER_API;
     this.posts.push(post);
     localStorage.setItem('posts', JSON.stringify(this.posts));
     return this.http.post<Post[]>(`${url}/posts`, post, httpOptions);
   }
 
   updatePost(id: any, post: Post) {
-    let url = env.POSTS_API;
+    let url = env.LOCAL_SERVER_API;
     this.posts.push(post);
     return this.http.put<Post[]>(`${url}/posts/${id}`, post, httpOptions);
   }
 
   deletePost(post: Post) {
-    let url = env.POSTS_API;
+    let url = env.LOCAL_SERVER_API;
     return this.http.delete<Post[]>(`${url}/posts/${post.id}`);
   }
 }

@@ -38,5 +38,9 @@
       <mat-error *ngIf="password.invalid">Enter Passwrod</mat-error>
     </mat-form-field>
     <button type="submit" mat-raised-button color="secondary">Sign Up</button>
+    <p class="other-option">
+      Already have an account?
+      <a mat-raised-button routerLink="/login" color="accent">Login</a>
+    </p>
   </form>
 </mat-card>

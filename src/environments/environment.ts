@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  POSTS_API: 'http://localhost:3000',
+  LOCAL_SERVER_API: 'http://localhost:3000',
 };
 
 /*

@@ -10,10 +10,18 @@
       >
     </li>
     <li>
-      <a mat-button routerLink="/login">Login</a>
+      <a mat-button routerLink="/login" routerLinkActive="mat-accent">Login</a>
     </li>
     <li>
-      <a mat-button routerLink="/signup">Sign Up</a>
+      <a mat-button (click)="logout()">Logout</a>
+    </li>
+    <li>
+      <a mat-button routerLink="/signup" routerLinkActive="mat-accent"
+        >Sign Up</a
+      >
+    </li>
+    <li>
+      <span>Hello {{ user?.name }}</span>
     </li>
   </ul>
 </mat-toolbar>

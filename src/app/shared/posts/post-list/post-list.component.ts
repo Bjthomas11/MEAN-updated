@@ -1,8 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
-import { Subscription } from 'rxjs';
+import { BehaviorSubject, Subject, Subscription } from 'rxjs';
 import { Post } from 'src/app/core/models/Post';
 import { PostsService } from 'src/app/core/services/posts.service';
+import { UserService } from 'src/app/core/services/user.service';
 
 @Component({
   selector: 'app-post-list',
@@ -15,8 +16,14 @@ export class PostListComponent implements OnInit {
   postPerPage: number = 2;
   pageSizeOptions: number[] = [1, 2, 5, 10];
   currentPage: number = 1;
+  isLoggedIn = new BehaviorSubject(false);
 
-  constructor(public postService: PostsService) {}
+  constructor(
+    public postService: PostsService,
+    private userService: UserService
+  ) {
+    // this.isLoggedIn = this.userService.isLoggedIn;
+  }
 
   ngOnInit(): void {
     this.postService

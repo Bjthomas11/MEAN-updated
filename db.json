@@ -1,9 +1,28 @@
 {
   "posts": [
     {
-      "title": "aax x",
-      "content": "da d ddds",
+      "title": " ds fsf fddf",
+      "content": " fd df df ",
       "id": 1
+    },
+    {
+      "title": " d sd. ",
+      "content": " fs s sf",
+      "id": 2
+    }
+  ],
+  "user": [
+    {
+      "name": "Brian",
+      "email": "test@google.com",
+      "password": "test",
+      "id": 3
+    },
+    {
+      "name": "Brian",
+      "email": "test@test.com",
+      "password": "test",
+      "id": 4
     }
   ]
 }

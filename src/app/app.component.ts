@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 import { Post } from './core/models/Post';
+import { User } from './core/models/User';
 import { PostsService } from './core/services/posts.service';
+import { UserService } from './core/services/user.service';
 
 @Component({
   selector: 'app-root',
@@ -8,7 +11,15 @@ import { PostsService } from './core/services/posts.service';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-  constructor(private postService: PostsService) {}
+  isLoggedIn = new BehaviorSubject(false);
+  user: User;
+  constructor(
+    private postService: PostsService,
+    private userService: UserService
+  ) {
+    this.isLoggedIn = this.userService.isLoggedIn;
+    this.user = this.userService.user.getValue();
+  }
 
   ngOnInit() {}
 }
