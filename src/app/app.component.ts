@@ -17,9 +17,12 @@ export class AppComponent implements OnInit {
     private postService: PostsService,
     private userService: UserService
   ) {
-    this.isLoggedIn = this.userService.isLoggedIn;
-    this.user = this.userService.user.getValue();
+    // this.isLoggedIn = this.userService.isLoggedIn;
+    // this.user = this.userService.user.getValue();
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.user = JSON.parse(localStorage.getItem('user'));
+    this.isLoggedIn.next(JSON.parse(localStorage.getItem('loggedIn')));
+  }
 }

@@ -10,6 +10,7 @@ import { UserService } from 'src/app/core/services/user.service';
 export class HeaderComponent implements OnInit {
   title: string = 'MEAN Course';
   @Input() user: User;
+  @Input() isLoggedIn: any;
   constructor(private userService: UserService) {}
 
   ngOnInit(): void {}

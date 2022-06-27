@@ -21,7 +21,9 @@ export class UserService {
 
   createUser(user: User) {
     let url = env.LOCAL_SERVER_API;
-    return this.http.post(`${url}/user`, user, httpOptions);
+    this.http.post(`${url}/user`, user, httpOptions).subscribe((res: any) => {
+      this.router.navigate(['/login']);
+    });
   }
 
   getUser(user: User) {

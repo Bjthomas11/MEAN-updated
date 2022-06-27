@@ -14,9 +14,7 @@ export class SignupComponent implements OnInit {
 
   onSubmit(signupForm: NgForm) {
     if (signupForm.invalid) return;
-    this.userService.createUser(signupForm.value).subscribe((res) => {
-      console.log(res);
-    });
+    this.userService.createUser(signupForm.value);
     // console.log(signupForm.value);
     // loginForm.reset();
   }

@@ -4,24 +4,31 @@
   >
   <span class="spacer"></span>
   <ul>
-    <li>
-      <a mat-button routerLink="/create" routerLinkActive="mat-accent"
-        >Create</a
-      >
-    </li>
-    <li>
-      <a mat-button routerLink="/login" routerLinkActive="mat-accent">Login</a>
-    </li>
-    <li>
-      <a mat-button (click)="logout()">Logout</a>
-    </li>
-    <li>
-      <a mat-button routerLink="/signup" routerLinkActive="mat-accent"
-        >Sign Up</a
-      >
-    </li>
-    <li>
-      <span>Hello {{ user?.name }}</span>
-    </li>
+    <ng-container *ngIf="isLoggedIn.getValue(); else loggedOut">
+      <li>
+        <a mat-button routerLink="/create" routerLinkActive="mat-accent"
+          >Create</a
+        >
+      </li>
+
+      <li>
+        <a mat-button (click)="logout()">Logout</a>
+      </li>
+      <li *ngIf="user">
+        <small>Hello, {{ user?.name }}</small>
+      </li>
+    </ng-container>
+    <ng-template #loggedOut>
+      <li>
+        <a mat-button routerLink="/login" routerLinkActive="mat-accent"
+          >Login</a
+        >
+      </li>
+      <li>
+        <a mat-button routerLink="/signup" routerLinkActive="mat-accent"
+          >Sign Up</a
+        >
+      </li>
+    </ng-template>
   </ul>
 </mat-toolbar>
